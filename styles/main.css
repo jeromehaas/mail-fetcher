@@ -90,6 +90,7 @@
 .mail-list {
   grid-area: mail-list;
   border: 1px solid red;
+  overflow: scroll;
 }
 
 .mail-meta {

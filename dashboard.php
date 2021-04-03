@@ -18,22 +18,30 @@
     print(quoted_printable_decode($message)."<br>");  
   };
 
-  function printMailList() {
+  function printMailList($imap) {
+    for ($i = 1; $i <= 100; $i++) {
+      $headerInfo = imap_header($imap, $i);   
+      echo $headerInfo->from[0]->personal . "<br />";
 
+      $date = strtotime($headerInfo->date);
+      echo date("Y.m.d  -  h:i:s", $date) . "<br /><br />";
+    }
+  
   };
 
-  function getSenderFromSpecificMail($headerInfo) {
-    
-  }
 
   function getTimeFromSpecificMail($headerInfo) {
     $date = strtotime($headerInfo->date);
-    echo date("Y.m.d  -  h:i:s", $date);
+    echo date("Y.m.d  -  h:i:s", $date) . "<br />";
+  }
+  
+  function getSenderNameFromSpecificMail($headerInfo) {
+    echo $headerInfo->sender[0]->personal  . "<br />";
   }
 
   $imap = openImapConnection($host, $user, $password);
-  $headers = imap_headers($imap);
-  $headerInfo = imap_headerinfo ( $imap , 8 , $from_length = 0 , $subject_length = 0);
+  $header = imap_header($imap, 100);
+  $headerInfo = imap_headerinfo ( $imap , 8 , $from_length = 10 , $subject_length = 10);
   $totalNumberOfMessages = imap_num_msg($imap);
   $folders = imap_list($imap, "{login-21.loginserver.ch}", "*");
   $emailData = imap_search($imap, '')
@@ -57,18 +65,16 @@
     <div id="dashboard-wrapper">
 
       <div class="mail-list">
-        <?php printMailList($headers); ?>
+        <?php printMailList($imap); ?>
       </div>
       <div class="mail-meta">
         <?php 
-          // print_r($headerInfo->sender);
-          echo $headerInfo->sender[0]->personal . "<br />";
-          // echo $headerInfo->date . "\n";
+          getSenderNameFromSpecificMail($headerInfo);
           getTimeFromSpecificMail($headerInfo);
         ?>
       </div>
       <div class="mail-content">
-        <?php // printMailContentHTML($imap, 8); ?>
+        <?php printMailContentHTML($imap, 8); ?>
       </div>
     </div>
 
