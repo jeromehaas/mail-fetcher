@@ -2,8 +2,11 @@
 <html lang="en">
   <?php include('./partials/head.php'); ?>
   <body>
+  <div id="page-wrapper">
   
-    <h1>Mail Fetcher</h1>
 
+  <?php include('./partials/header.php'); ?>
+
+  </div>
   </body>
 </html>
