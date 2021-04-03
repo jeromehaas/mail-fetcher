@@ -78,7 +78,7 @@
 #dashboard-wrapper {
   display: grid;
   height: calc(600px - 60px);
-  grid-template-columns: 300px 100%;
+  grid-template-columns: 300px auto;
   grid-template-rows: 80px 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
@@ -100,4 +100,5 @@
 .mail-content {
   grid-area: mail-content;
   border: 1px solid blue;
+  overflow: scroll;
 }
