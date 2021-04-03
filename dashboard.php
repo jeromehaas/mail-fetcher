@@ -22,11 +22,8 @@
     for ($i = 1; $i <= 100; $i++) {
       $headerInfo = imap_header($imap, $i);   
       echo $headerInfo->from[0]->personal . "<br />";
-
-      $date = strtotime($headerInfo->date);
-      echo date("Y.m.d  -  h:i:s", $date) . "<br /><br />";
+      echo date("Y.m.d  -  h:i:s", strtotime($headerInfo->date)) . "<br /><br />";
     }
-  
   };
 
 
@@ -63,18 +60,19 @@
     <div id="page-wrapper">
       
     <?php include('./partials/header.php'); ?>
-    <div id="dashboard-wrapper">
+    <div id="dashboard__wrapper">
 
-      <div class="mail-list">
+      <div class="dashboard__mail-list">
         <?php printMailList($imap); ?>
       </div>
-      <div class="mail-meta">
-        <?php 
-          getSenderNameFromSpecificMail($headerInfo);
-          getTimeFromSpecificMail($headerInfo);
-        ?>
+      <div class="dashboard__mail-meta">
+        <img class="dashboard__mail-meta__img" src="./media/icons/avatar.svg" alt="Avatar">
+        <div class="dashboard__mail-meta__text">
+          <?php getSenderNameFromSpecificMail($headerInfo); ?>
+          <?php getTimeFromSpecificMail($headerInfo); ?>
+        </div>
       </div>
-      <div class="mail-content">
+      <div class="dashboard__mail-content">
         <?php printMailContentHTML($imap, $currentMail); ?>
       </div>
     </div>
