@@ -44,7 +44,8 @@
   $headerInfo = imap_headerinfo ( $imap , 8 , $from_length = 10 , $subject_length = 10);
   $totalNumberOfMessages = imap_num_msg($imap);
   $folders = imap_list($imap, "{login-21.loginserver.ch}", "*");
-  $emailData = imap_search($imap, '')
+  $emailData = imap_search($imap, '');
+  $currentMail = $_GET['currentMail'] ?? 1;
 
 
   
@@ -74,7 +75,7 @@
         ?>
       </div>
       <div class="mail-content">
-        <?php printMailContentHTML($imap, 8); ?>
+        <?php printMailContentHTML($imap, $currentMail); ?>
       </div>
     </div>
 
