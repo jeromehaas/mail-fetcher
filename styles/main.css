@@ -4,10 +4,10 @@
 
 #notifier {
   width: auto;
-  max-width: 800px;
-  min-width: 350px;
+  max-width: 350px;
   background-color: white;
   padding: 15px;
+  font-size: 12px;
   text-align: center;
   position: absolute;
   bottom: 0;
@@ -33,6 +33,11 @@
 
 .header__logo {
   font-size: 25px;
+}
+.header__logout {
+  color: var(--blue);
+  font-family: 'Lato Bold', sans-serif;
+  text-decoration: none;
 }
 /*------------------------------------------------*/
 /*-- LOGIN-FORM 
