@@ -22,4 +22,5 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--light-grey);
+    box-shadow: 0 0 0px 5px #ffffff;
 }

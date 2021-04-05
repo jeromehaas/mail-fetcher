@@ -4,11 +4,18 @@
 <!-------------------------------------------------------------------------------------------------------------------------------------------------------->
 <?php
   
-  include('./environment.php');
+  session_start();
+  if (isset($_SESSION['host'], $_SESSION['username'], $_SESSION['password'])) {
+    $host = $_SESSION['host'];
+    $username = $_SESSION['username'];
+    $password = $_SESSION['password'];
+    $_SESSION['loggedIn'] = true;
+  } else {
+    header("Location: http://localhost:8888/mail-fetcher/");
+  };
 
-  function openImapConnection($host, $user, $password) {
-    $imap = imap_open($host, $user, $password);
-    echo ($imap ? 'connection successfull' : 'connection failed');
+  function openImapConnection($host, $username, $password) {
+    $imap = imap_open($host, $username, $password);
     return $imap;
   }
 
@@ -45,7 +52,7 @@
     </div>';
   }
 
-  $imap = openImapConnection($host, $user, $password);
+  $imap = openImapConnection($host, $username, $password);
   $headerInfo = imap_headerinfo( $imap , $_GET['currentMail'] ?? 1);
   $totalNumberOfMessages = imap_num_msg($imap);
   $folders = imap_list($imap, "{login-21.loginserver.ch}", "*");
@@ -62,12 +69,8 @@
 
   <?php include('./partials/head.php'); ?>
   <body>
-    <div class="dashboard__status-bar">
-      success
-    </div>
     <div id="page-wrapper">
       
-
     <?php include('./partials/header.php'); ?>
     <div id="dashboard__wrapper">
 
