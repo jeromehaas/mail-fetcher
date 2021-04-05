@@ -4,7 +4,8 @@
   }
 
   body {
-    background-color: var(--dark-grey);
+    background: rgb(78, 84, 200);
+    background: linear-gradient(126deg, rgba(78, 84, 200, 1) 0%, rgba(143, 148, 251, 1) 100%);
     position: relative;
     height: 100vh;
     width: 100vw;
