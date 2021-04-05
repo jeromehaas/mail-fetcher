@@ -28,6 +28,7 @@
   height: 60px;
   background-color: var(--white);
   padding: 15px;
+  border-bottom: 1px solid var(--light-grey);
 }
 
 .header__logo {
@@ -79,7 +80,7 @@
   display: grid;
   height: calc(600px - 60px);
   grid-template-columns: 300px auto;
-  grid-template-rows: 80px 1fr 1fr;
+  grid-template-rows: 70px 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
     "mail-list mail-meta"
@@ -89,16 +90,47 @@
 
 .dashboard__mail-list {
   grid-area: mail-list;
-  border: 1px solid red;
   overflow: scroll;
+}
+
+.dashboard__mail-list__list {}
+
+.dashboard__mail-list__list-item {
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 15px;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.dashboard__mail-list__anchor {
+  text-decoration: none;
+}
+
+.dashboard__mail-list__sender,
+.dashboard__mail-list__date {
+  margin: 0;
+  text-decoration: none;
+}
+
+.dashboard__mail-list__sender {
+  font-family: 'Lato Bold', sans-serif;
+}
+
+.dashboard__mail-list__date {
+  font-family: 'Lato Light', sans-serif;
 }
 
 .dashboard__mail-meta {
   grid-area: mail-meta;
-  border: 1px solid green;
+  height: 70px;
   padding: 15px;
   display: flex;
-  flex-direction: row;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--light-grey);
 }
 
 .dashboard__mail-meta__img {
@@ -109,8 +141,20 @@
 
 .dashboard__mail-meta__text {}
 
+.dashboard__mail-meta__sender,
+.dashboard__mail-meta__date {
+  margin: 0;
+}
+
+.dashboard__mail-meta__sender {
+  font-family: 'Lato Bold', sans-serif;
+}
+
+.dashboard__mail-meta__date {
+  font-family: 'Lato Light', sans-serif;
+}
+
 .dashboard__mail-content {
   grid-area: mail-content;
-  border: 1px solid blue;
   overflow: scroll;
 }
